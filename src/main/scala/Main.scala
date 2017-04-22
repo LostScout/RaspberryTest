@@ -4,20 +4,23 @@ import akka.cluster.ClusterEvent.{CurrentClusterState, MemberEvent, MemberRemove
 import akka.cluster.{Cluster, MemberStatus}
 import akka.pattern.ask
 import akka.util.Timeout
+import playground.gpio.ListenGpioExample
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 
 object Main extends App {
-  implicit val timeout: Timeout = 30.seconds
-  implicit val ec = ExecutionContext.Implicits.global
+//  implicit val timeout: Timeout = 30.seconds
+//  implicit val ec = ExecutionContext.Implicits.global
+//
+//  val actorSystem = ActorSystem("RaspberryBush")
+//  val cluster = Cluster(actorSystem)
+//
+//  val memberListener = actorSystem.actorOf(Props(classOf[MemberListener]), "MemberListener")
 
-  val actorSystem = ActorSystem("RaspberryBush")
-  val cluster = Cluster(actorSystem)
+  val example = new ListenGpioExample()
+  example.main(Array())
 
-  val memberListener = actorSystem.actorOf(Props(classOf[MemberListener]), "MemberListener")
-
-  (memberListener ? GetNodes).map(x => println(x))
 }
 
 

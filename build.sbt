@@ -27,6 +27,8 @@ libraryDependencies ++= List(
 "com.typesafe.akka" %% "akka-contrib" % "2.5.0"
 )
 
+libraryDependencies += "com.pi4j" % "pi4j-core" % "1.1"
+
 lazy val commonSettings = Seq(
   version := "0.1-SNAPSHOT",
   organization := "trent",
